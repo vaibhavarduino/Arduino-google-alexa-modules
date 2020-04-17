@@ -1,0 +1,22 @@
+float temp;
+int tempPin = 0;
+int pin8 = 8;
+void setup()
+{
+  pinMode(pin8, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  temp = analogRead(tempPin);
+  temp = (5.0 * temp * 100.0)/1024.0;
+  Serial.print(temp);
+  Serial.print(" degrees Celsius, ");
+  Serial.println();
+  if(temp>=30.00){digitalWrite(pin8,HIGH);
+  Serial.print(" fan starts, ");}
+  delay(2000);
+  digitalWrite(pin8,LOW);
+  delay(1);
+}
